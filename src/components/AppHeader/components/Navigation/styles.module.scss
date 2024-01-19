@@ -1,0 +1,14 @@
+.navigation {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.navItem {
+  color: #fff;
+  padding: 0.5rem 1rem;
+  min-width: 110px;
+  border-radius: 50px;
+  text-align: center;
+  border: 2px solid #fff;
+}

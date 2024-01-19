@@ -61,7 +61,7 @@ const Scene = ({
     <SceneContext.Provider
       value={{ scrollYProgress, scrollPosition, container: sceneRef }}
     >
-      <section
+      <div
         className={styles.scene}
         ref={sceneRef}
         style={{ background, minHeight, overflow }}
@@ -95,7 +95,7 @@ const Scene = ({
         </div>
 
         {Footer && <footer className={styles.scene__footer}>{Footer}</footer>}
-      </section>
+      </div>
     </SceneContext.Provider>
   );
 };

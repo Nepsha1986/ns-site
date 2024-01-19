@@ -1,0 +1,14 @@
+.header {
+  position: fixed;
+  backdrop-filter: blur(10px);
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 420px;
+  z-index: 2;
+  background: rgba(187, 89, 19, 0.35);
+
+  &__container {
+    padding: 5rem 1rem;
+  }
+}

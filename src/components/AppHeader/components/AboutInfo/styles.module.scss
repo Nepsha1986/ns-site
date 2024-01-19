@@ -1,0 +1,14 @@
+.aboutInfo {
+  color: #efefef;
+  text-shadow: 1px 1px 1px #000;
+
+  &__heading {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  &__subHeading {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+}
