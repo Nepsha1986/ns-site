@@ -3,7 +3,7 @@ interface Props {
   label: string;
 }
 const Chip = ({ label }: Props) => {
-  return <div className={styles.chip}>{label}</div>;
+  return <span className={styles.chip}>{label}</span>;
 };
 
 export default Chip;
