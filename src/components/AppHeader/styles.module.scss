@@ -10,5 +10,9 @@
 
   &__container {
     padding: 5rem 1rem;
+    justify-content: space-around;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
   }
 }

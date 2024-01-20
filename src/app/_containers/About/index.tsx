@@ -4,12 +4,21 @@ const About = () => {
   return (
     <Section id="about" heading="About">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-        aliquam dicta facilis id maiores minima saepe similique voluptatibus. At
-        atque beatae blanditiis deleniti dolorem dolorum eveniet facere impedit
-        iste libero maxime nobis, optio perspiciatis reprehenderit sunt tempore
-        velit. Animi aperiam cum eaque ex libero odio quasi suscipit temporibus
-        ullam veritatis.
+        I am a highly skilled frontend developer with a passion for crafting
+        seamless and visually appealing user experiences.
+      </p>
+
+      <p>
+        Experienced in diverse web technologies, I creatively transform design
+        mockups into responsive websites. I specialize in optimizing site
+        performance, and turning ideas into user-friendly interfaces. Committed
+        to staying current with industry trends, I deliver high-quality code.
+      </p>
+
+      <p>
+        I also own <a href="https://gift-idea.co/en-us/">gift-idea.co</a>,
+        curating and presenting unique gift ideas to showcase my passion for
+        creating engaging online experiences.
       </p>
     </Section>
   );

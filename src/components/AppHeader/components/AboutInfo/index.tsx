@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './styles.module.scss';
 
-const personalPageURL = 'https://gift-idea.co/en-us/about-me';
-const projectSrcURL = 'https://github.com/Nepsha1986/fable';
 const AboutInfo = () => {
   return (
     <div className={styles.aboutInfo}>

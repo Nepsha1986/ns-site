@@ -1,5 +1,6 @@
-import Navigation from '@/components/AppHeader/components/Navigation';
-import AboutInfo from '@/components/AppHeader/components/AboutInfo';
+import Navigation from './components/Navigation';
+import AboutInfo from './components/AboutInfo';
+import Socials from './components/Socials';
 
 import styles from './styles.module.scss';
 
@@ -9,6 +10,7 @@ const SiteHeader = () => {
       <div className={styles.header__container}>
         <AboutInfo />
         <Navigation />
+        <Socials />
       </div>
     </div>
   );
