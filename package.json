@@ -10,6 +10,7 @@
     "format": "prettier ./src --write"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",

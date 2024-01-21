@@ -1,6 +1,10 @@
 :root {
   --c-primary-light: #ec7b32;
   --c-primary-dark: #943c03;
+
+  --c-text-light: #c0c0c0;
+  --c-text-lighter: #dedddd;
+  --c-text-lightest: #fff;
 }
 
 * {
@@ -24,17 +28,50 @@ h2,
 h3,
 h4,
 h5,
-h6,
-p {
+h6 {
+  color: var(--c-text-lightest);
   margin-bottom: 1em;
 }
 
 p {
+  margin-bottom: 1em;
+  color: var(--c-text-light);
   line-height: 1.5em;
-  font-weight: 200;
 }
 
 a {
-  color: inherit;
+  color: var(--c-text-lightest);
+  font-weight: 400;
   text-decoration: none;
+}
+
+label {
+  color: var(--c-text-light);
+  font-size: 0.75rem;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+
+input, textarea {
+  border: none;
+  padding: 5px 15px;
+  display: block;
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background: transparent;
+  margin-bottom: 0.8rem;
+  color: #fff;
+  resize: none;
+  transition: 0.3s;
+  border-radius: 5px;
+
+  &:focus {
+    background: rgba(0, 0, 0, 0.2);
+    outline: none;
+  }
+}
+
+input {
+  line-height: 1.35;
 }

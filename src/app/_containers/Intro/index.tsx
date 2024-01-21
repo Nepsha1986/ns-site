@@ -14,7 +14,7 @@ import Clouds from '@/components/EasterIsland/Clouds';
 const Intro = () => {
   return (
     <section id="intro">
-      <Scene background="linear-gradient(to top, #ff9d5e, #fe9857, #fc934f, #fb8d48, #f98840);">
+      <Scene background="linear-gradient(to top, #ff9d5e, #fe9857, #fc934f, #fb8d48, #f98840)">
         <Scene.Item depth={-900} width="180%" bottom="-200px" left="-40%">
           <Sun />
         </Scene.Item>

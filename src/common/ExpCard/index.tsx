@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { motion } from "framer-motion";
 
 import Chip from '@/common/Chip';
 
@@ -25,11 +28,16 @@ const ExpCard = ({
   techStack = [],
 }: Props) => {
   return (
-    <a
+    <motion.a
       href={company.link}
       target="_blank"
       rel="noreferrer"
       className={styles.expCard}
+      whileHover={{
+        scale: 1.01,
+        backgroundColor: 'rgba(0, 0, 0, 0.08)',
+      }}
+      transition={{ duration: 0.3 }}
     >
       <div className={styles.expCard__dateRange}>{dateRange}</div>
 
@@ -51,7 +59,7 @@ const ExpCard = ({
           </ul>
         )}
       </div>
-    </a>
+    </motion.a>
   );
 };
 

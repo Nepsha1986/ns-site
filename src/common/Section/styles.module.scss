@@ -1,11 +1,10 @@
 .section {
   padding: 3rem 15px 3rem 435px;
   background: #3d1e08;
-  color: #fff;
   display: flex;
   justify-content: center;
 
   &__container {
-    max-width: 900px;
+    max-width: 800px;
   }
 }

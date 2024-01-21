@@ -1,16 +1,21 @@
 import Section from '@/common/Section';
+import ContactForm from "@/containers/ContactForm";
 
 const Contacts = () => {
-  return (
-    <Section id="contacts" heading="Contacts">
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
-        cupiditate deleniti ducimus eius, eveniet explicabo fugiat, magni maxime
-        nam nisi officia optio provident, quia quos recusandae sapiente totam.
-        Beatae minus molestiae mollitia necessitatibus odit, pariatur placeat
-        quo! Ab delectus dolorem eius fugit numquam placeat porro sit veritatis
-        voluptate voluptatem. Cupiditate.
-      </p>
+	return (
+		<Section id="contacts" heading="Get in Touch">
+      <>
+        <p>
+          Thank you for visiting my page! Whether you have a question, a suggestion, or just want to say hello, I'd
+          love to hear from you. Feel free to reach out through the contact form below or drop me an email.
+        </p>
+
+        <ContactForm/>
+
+        <p>You can also reach me directly via email at <a href="email:nepsha1986@gmail.com">nepsha1986@gmail.com</a>. I
+          strive to respond to all inquiries within two working days, so you can expect a prompt reply. Looking forward
+          to connecting with you!</p>
+      </>
     </Section>
   );
 };
