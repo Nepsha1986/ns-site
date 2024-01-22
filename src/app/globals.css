@@ -37,6 +37,10 @@ p {
   margin-bottom: 1em;
   color: var(--c-text-light);
   line-height: 1.5em;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 a {
@@ -52,8 +56,8 @@ label {
   display: inline-block;
 }
 
-
-input, textarea {
+input,
+textarea {
   border: none;
   padding: 5px 15px;
   display: block;
@@ -65,13 +69,10 @@ input, textarea {
   resize: none;
   transition: 0.3s;
   border-radius: 5px;
+  line-height: 1.35;
 
   &:focus {
     background: rgba(0, 0, 0, 0.2);
     outline: none;
   }
-}
-
-input {
-  line-height: 1.35;
 }

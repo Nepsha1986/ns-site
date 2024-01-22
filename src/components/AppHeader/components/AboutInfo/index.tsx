@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './styles.module.scss';
 
 const AboutInfo = () => {
@@ -9,7 +8,8 @@ const AboutInfo = () => {
       </h1>
       <p className={styles.aboutInfo__subHeading}>Senior Frontend Developer</p>
       <p className={styles.aboutInfo__main}>
-        I build pixel-perfect, accessible products for the web and beyond.
+        Experienced frontend developer with a flair for crafting seamless user
+        experiences.
       </p>
     </div>
   );

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-
-import styles from './styles.module.scss';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import classNames from 'classnames';
+
+import styles from './styles.module.scss';
 
 interface Props extends HTMLMotionProps<'button'> {
   children: ReactNode;
@@ -19,6 +19,9 @@ const Button = ({ children, color = 'dark', ...rest }: Props) => {
       {...rest}
       whileTap={{
         scale: 1.1,
+      }}
+      whileHover={{
+        scale: 1.03,
       }}
     >
       {children}
