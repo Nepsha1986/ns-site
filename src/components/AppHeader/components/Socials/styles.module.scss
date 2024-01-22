@@ -11,5 +11,10 @@
     font-size: 32px;
     color: #fff;
     display: block;
+    opacity: 0.75;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }

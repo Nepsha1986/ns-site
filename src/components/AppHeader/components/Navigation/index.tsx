@@ -1,10 +1,11 @@
 'use client';
+import { useContext } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
 
-import styles from './styles.module.scss';
-import { useContext } from 'react';
 import HomePageContext from '@/app/context';
+
+import styles from './styles.module.scss';
 
 const NavItem = ({
   link,

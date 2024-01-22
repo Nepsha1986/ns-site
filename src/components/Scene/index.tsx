@@ -2,10 +2,7 @@
 import React, { cloneElement, ElementRef, useRef, useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 
-import TextBlock from './TextBlock';
 import Item from './Item';
-import Footer from './Footer';
-import Header from './Header';
 
 import SceneContext from './context';
 import styles from './styles.module.scss';
@@ -13,17 +10,10 @@ import styles from './styles.module.scss';
 interface Props {
   children: React.ReactNode;
   background?: string;
-  debug?: boolean;
   minHeight?: string;
   overflow?: string;
 }
-const Scene = ({
-  children,
-  background,
-  debug,
-  minHeight = '100dvh',
-  overflow = 'hidden',
-}: Props) => {
+const Scene = ({ children, background, overflow = 'hidden' }: Props) => {
   const sceneRef = useRef<ElementRef<'div'>>(null);
   const [scrollPosition, setScrollPosition] = useState<number | undefined>();
 
@@ -36,26 +26,14 @@ const Scene = ({
     setScrollPosition(latest);
   });
 
-  type SceneComponentType =
-    | typeof Scene.TextBlock
-    | typeof Scene.Item
-    | typeof Scene.Header
-    | typeof Scene.Footer;
+  type SceneComponentType = typeof Scene.Item;
 
   const getComponents = (el: SceneComponentType): React.ReactNode[] =>
     React.Children.toArray(children).filter(
       (child) => (child as React.ReactElement).type === el,
     );
 
-  const getComponent = (el: SceneComponentType): React.ReactNode =>
-    React.Children.toArray(children).find(
-      (child) => (child as React.ReactElement).type === el,
-    );
-
-  const Texts = getComponents(Scene.TextBlock) || null;
   const Items = getComponents(Scene.Item) || null;
-  const Footer = getComponent(Scene.Footer) || null;
-  const Header = getComponent(Scene.Header) || null;
 
   return (
     <SceneContext.Provider
@@ -64,7 +42,7 @@ const Scene = ({
       <div
         className={styles.scene}
         ref={sceneRef}
-        style={{ background, minHeight, overflow }}
+        style={{ background, overflow }}
       >
         {!!scrollPosition && (
           <motion.div
@@ -75,34 +53,13 @@ const Scene = ({
           >
             {!!Items.length &&
               Items.map((Child) => cloneElement(Child as React.ReactElement))}
-
-            {debug && (
-              <>
-                <div className={styles.scene__roof} />
-                <div className={styles.scene__floor} />
-                <div className={styles.scene__wallLeft} />
-                <div className={styles.scene__wallRight} />
-              </>
-            )}
           </motion.div>
         )}
-
-        {Header && <header className={styles.scene__header}>{Header}</header>}
-
-        <div className={styles.scene__content}>
-          {!!Texts.length &&
-            Texts.map((Child) => cloneElement(Child as React.ReactElement))}
-        </div>
-
-        {Footer && <footer className={styles.scene__footer}>{Footer}</footer>}
       </div>
     </SceneContext.Provider>
   );
 };
 
-Scene.TextBlock = TextBlock;
 Scene.Item = Item;
-Scene.Footer = Footer;
-Scene.Header = Header;
 
 export default Scene;

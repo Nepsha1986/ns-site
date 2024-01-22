@@ -9,8 +9,14 @@ const SiteHeader = () => {
     <div className={styles.header}>
       <div className={styles.header__container}>
         <AboutInfo />
-        <Navigation />
-        <Socials />
+
+        <div className={styles.header__nav}>
+          <Navigation />
+        </div>
+
+        <div className={styles.header__socials}>
+          <Socials />
+        </div>
       </div>
     </div>
   );

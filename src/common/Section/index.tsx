@@ -26,7 +26,6 @@ const Section = ({ heading, children, ...props }: Props) => {
 
   useEffect(() => {
     if (isInView) {
-      console.log();
       setActiveSection(props.id as HomePageSection);
     }
   }, [isInView]);
