@@ -13,10 +13,11 @@ import HomePageContext, { HomePageSection } from '@/app/context';
 import styles from './styles.module.scss';
 
 interface Props extends ComponentPropsWithoutRef<'section'> {
+  id: string;
   children?: React.ReactNode;
   heading?: string;
 }
-const Section = ({ heading, children, ...props }: Props) => {
+const Section = ({ heading, children, id, ...props }: Props) => {
   const ref = useRef<HTMLHeadingElement>(null);
   const { setActiveSection } = useContext(HomePageContext);
 
@@ -26,9 +27,9 @@ const Section = ({ heading, children, ...props }: Props) => {
 
   useEffect(() => {
     if (isInView) {
-      setActiveSection(props.id as HomePageSection);
+      setActiveSection(id as HomePageSection);
     }
-  }, [isInView]);
+  }, [isInView, setActiveSection, id]);
 
   return (
     <section className={styles.section} {...props}>

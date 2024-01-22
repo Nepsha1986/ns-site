@@ -5,9 +5,9 @@ const Contacts = () => {
   return (
     <Section id="contacts" heading="Get in Touch">
       <p>
-        Thank you for visiting my page! Whether you have a question, a
-        suggestion, or just want to say hello, I'd love to hear from you. Feel
-        free to reach out through the contact form below or drop me an email.
+        {
+          "Thank you for visiting my page! Whether you have a question, a suggestion, or just want to say hello, I'd love to hear from you. Feel free to reach out through the contact form below or drop me an email."
+        }
       </p>
 
       <ContactForm />
