@@ -1,8 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
 import styles from './styles.module.scss';
-import classNames from 'classnames';
+import { useContext } from 'react';
+import HomePageContext from '@/app/context';
 
 const NavItem = ({
   link,
@@ -24,11 +26,25 @@ const NavItem = ({
   );
 };
 const Navigation = () => {
+  const { activeSection } = useContext(HomePageContext);
+
   return (
     <nav className={styles.navigation}>
-      <NavItem label="About" link="#about" isActive />
-      <NavItem label="Experience" link="#experience" />
-      <NavItem label="Contacts" link="#contacts" />
+      <NavItem
+        label="About"
+        link="#about"
+        isActive={activeSection === 'about'}
+      />
+      <NavItem
+        label="Experience"
+        link="#experience"
+        isActive={activeSection === 'experience'}
+      />
+      <NavItem
+        label="Contacts"
+        link="#contacts"
+        isActive={activeSection === 'contacts'}
+      />
     </nav>
   );
 };

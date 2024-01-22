@@ -5,7 +5,8 @@
 }
 
 .navItem {
-  color: #fff;
+  color: var(--c-primary-light);
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.3);
   text-transform: uppercase;
   font-size: 0.85rem;
   font-weight: bold;
@@ -14,7 +15,7 @@
   text-align: center;
 
   &_active {
-    text-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+    color: #fff;
     transform: scale(1.15);
   }
 }

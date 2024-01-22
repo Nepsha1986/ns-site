@@ -16,8 +16,11 @@ const About = () => {
       </p>
 
       <p>
-        I also own <a href="https://gift-idea.co/en-us/">gift-idea.co</a>,
-        curating and presenting unique gift ideas to showcase my passion for
+        I also own{' '}
+        <a href="https://gift-idea.co/en-us/" target="_blank">
+          gift-idea.co
+        </a>
+        , curating and presenting unique gift ideas to showcase my passion for
         creating engaging online experiences.
       </p>
     </Section>
