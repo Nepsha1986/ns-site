@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 import Chip from '@/common/Chip';
 
@@ -29,6 +31,7 @@ const ExpCard = ({
 }: Props) => {
   return (
     <motion.a
+      title={`Open ${company.name} website in a new tab`}
       href={company.link}
       target="_blank"
       rel="noreferrer"
@@ -43,7 +46,12 @@ const ExpCard = ({
 
       <div className={styles.expCard__main}>
         {!!company && (
-          <h2 className={styles.expCard__company}>{company.name}</h2>
+          <h2 className={styles.expCard__company}>
+            {company.name}{' '}
+            <span className={styles.expCard__externalIcon}>
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+            </span>
+          </h2>
         )}
         {!!position && <h3 className={styles.expCard__position}>{position}</h3>}
 
