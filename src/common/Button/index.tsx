@@ -6,11 +6,13 @@ import styles from './styles.module.scss';
 
 interface Props extends HTMLMotionProps<'button'> {
   children: ReactNode;
-  color?: 'dark' | 'light';
+  color?: 'dark' | 'light' | 'transparent';
+  size?: 'sm' | 'md' | 'lg';
 }
-const Button = ({ children, color = 'dark', ...rest }: Props) => {
+const Button = ({ children, color = 'dark', size = 'sm', ...rest }: Props) => {
   const classname = classNames(styles.button, {
     [styles[`button_${color}`]]: !!color,
+    [styles[`button_${size}`]]: !!size,
   });
 
   return (

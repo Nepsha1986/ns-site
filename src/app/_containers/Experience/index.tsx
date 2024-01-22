@@ -1,5 +1,6 @@
 import Section from '@/common/Section';
 import ExpCard from '@/common/ExpCard';
+import DownloadCV from './components/DownloadCV';
 import experience from './experience';
 
 const Experience = () => {
@@ -15,6 +16,10 @@ const Experience = () => {
           techStack={i.techStack}
         />
       ))}
+
+      <footer style={{ marginTop: '20px' }}>
+        <DownloadCV />
+      </footer>
     </Section>
   );
 };
