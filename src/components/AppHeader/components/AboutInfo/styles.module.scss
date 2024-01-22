@@ -1,0 +1,20 @@
+.aboutInfo {
+  text-shadow: 1px 1px 1px #000;
+  text-align: center;
+
+  &__heading {
+    color: var(--c-text-lightest);
+    font-size: 3rem;
+    margin-bottom: 0.3rem;
+  }
+
+  &__subHeading {
+    color: var(--c-text-lighter);
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+  }
+
+  &__main {
+    color: var(--c-text-lighter);
+  }
+}

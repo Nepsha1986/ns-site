@@ -1,0 +1,46 @@
+.button {
+  padding: 0.5rem;
+  min-width: 90px;
+  border-radius: 30px;
+  background: transparent;
+  cursor: pointer;
+
+  &_dark {
+    color: #fff;
+    background: var(--c-primary-dark);
+    border: 2px solid var(--c-primary-dark);
+  }
+
+  &_light {
+    color: var(--c-primary-light);
+    border: 2px solid var(--c-primary-light);
+  }
+
+  &_transparent {
+    color: #fff;
+    background: transparent;
+    border: 2px solid transparent;
+  }
+
+  &_sm {
+    font-size: 0.85rem;
+  }
+
+  &_md {
+    font-size: 1rem;
+  }
+
+  &_lg {
+    font-size: 1.15rem;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: auto;
+  }
+
+  &:focus {
+    outline-color: var(--c-primary-light);
+    box-shadow: none;
+  }
+}
