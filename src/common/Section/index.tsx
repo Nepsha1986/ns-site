@@ -32,7 +32,7 @@ const Section = ({ heading, children, id, ...props }: Props) => {
   }, [isInView, setActiveSection, id]);
 
   return (
-    <section className={styles.section} {...props}>
+    <section className={styles.section} id={id} {...props}>
       <div className={styles.section__container}>
         <h1 className={styles.section__heading} ref={ref}>
           {heading}
