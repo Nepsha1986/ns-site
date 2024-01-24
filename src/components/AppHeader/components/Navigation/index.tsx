@@ -1,9 +1,8 @@
 'use client';
-import { useContext } from 'react';
-import { motion } from 'framer-motion';
-import classNames from 'classnames';
 
-import HomePageContext from '@/app/context';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
@@ -21,30 +20,22 @@ const NavItem = ({
   });
 
   return (
-    <motion.a whileTap={{ scale: 1.05 }} className={className} href={link}>
+    <Link className={className} href={link}>
       {label}
-    </motion.a>
+    </Link>
   );
 };
 const Navigation = () => {
-  const { activeSection } = useContext(HomePageContext);
+  const pathname = usePathname();
 
   return (
     <nav className={styles.navigation}>
-      <NavItem
-        label="About"
-        link="#about"
-        isActive={activeSection === 'about'}
-      />
-      <NavItem
-        label="Experience"
-        link="#experience"
-        isActive={activeSection === 'experience'}
-      />
+      <NavItem label="Home" link="/" isActive={pathname === '/'} />
+      <NavItem label="About" link="/about" isActive={pathname === '/about'} />
       <NavItem
         label="Contacts"
-        link="#contacts"
-        isActive={activeSection === 'contacts'}
+        link="/contacts"
+        isActive={pathname === '/contacts'}
       />
     </nav>
   );
