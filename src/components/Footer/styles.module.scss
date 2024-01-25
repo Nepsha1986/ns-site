@@ -1,12 +1,17 @@
-.header {
+.footer {
+  font-size: 14px;
+
   &__container {
     padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &_fixed {
     position: fixed;
     background: transparent;
-    top: 0;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 2;
