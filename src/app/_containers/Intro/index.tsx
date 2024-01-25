@@ -14,6 +14,8 @@ const HouseModel = React.memo(() => {
   return <primitive object={data.scene} />;
 });
 
+HouseModel.displayName = 'HouseModel';
+
 const House = () => {
   const [angleX, setXAngle] = useState(0.5);
   const [angleY, setYAngle] = useState(0);
