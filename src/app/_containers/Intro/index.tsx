@@ -3,13 +3,18 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import AboutInfo from '../../../components/AboutInfo';
-import Socials from '../../../components/Socials';
+
+import AboutInfo from '@/components/AboutInfo';
+import Socials from '@/components/Socials';
 
 import styles from './styles.module.scss';
 
+const HouseModel = React.memo(() => {
+  const data = useLoader(GLTFLoader, '/house.glb');
+  return <primitive object={data.scene} />;
+});
+
 const House = () => {
-  const { scene } = useLoader(GLTFLoader, '/house.glb');
   const [angleX, setXAngle] = useState(0.5);
   const [angleY, setYAngle] = useState(0);
 
@@ -27,28 +32,25 @@ const House = () => {
 
   return (
     <mesh rotation={[angleY, angleX, 0]}>
-      <primitive object={scene} />
+      <HouseModel />
     </mesh>
   );
 };
 
-const Intro = () => {
-  return (
-    <div className={styles.intro}>
-      <Canvas
-        camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
-        style={{ height: '100dvh' }}
-      >
-        <ambientLight intensity={1} />
-        <House />
-      </Canvas>
+const Intro = () => (
+  <div className={styles.intro}>
+    <Canvas
+      camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
+      className={styles.canvas}
+    >
+      <House />
+    </Canvas>
 
-      <div className={styles.intro__main}>
-        <AboutInfo />
-        <Socials />
-      </div>
+    <div className={styles.intro__main}>
+      <AboutInfo />
+      <Socials />
     </div>
-  );
-};
+  </div>
+);
 
 export default Intro;

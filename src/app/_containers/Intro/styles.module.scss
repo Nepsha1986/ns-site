@@ -9,3 +9,19 @@
     max-width: 600px;
   }
 }
+
+.canvas {
+  opacity: 0;
+  height: 100dvh !important;
+  animation: 1s 0.5s fadeIn forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
