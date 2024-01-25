@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import AboutInfo from '@/components/AppHeader/components/AboutInfo';
-import Socials from '@/components/AppHeader/components/Socials';
+import AboutInfo from '../../../components/AboutInfo';
+import Socials from '../../../components/Socials';
 
 import styles from './styles.module.scss';
 

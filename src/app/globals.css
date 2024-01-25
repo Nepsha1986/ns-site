@@ -23,6 +23,7 @@ body {
   background: #3d1e07;
   max-width: 100vw;
   overflow-x: hidden;
+  font-weight: 300;
 }
 
 html {
