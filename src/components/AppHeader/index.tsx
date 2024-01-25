@@ -1,24 +1,26 @@
 import Navigation from './components/Navigation';
-import AboutInfo from './components/AboutInfo';
-import Socials from './components/Socials';
+import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
-const SiteHeader = () => {
+interface Props {
+  fixed?: boolean;
+  lightNav?: boolean;
+}
+
+const SiteHeader = ({ fixed = false, lightNav = true }: Props) => {
+  const classname = classNames(styles.header, {
+    [styles.header_fixed]: fixed,
+  });
+
   return (
-    <div className={styles.header}>
+    <header className={classname}>
       <div className={styles.header__container}>
-        <AboutInfo />
-
         <div className={styles.header__nav}>
-          <Navigation />
-        </div>
-
-        <div className={styles.header__socials}>
-          <Socials />
+          <Navigation light={lightNav} />
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

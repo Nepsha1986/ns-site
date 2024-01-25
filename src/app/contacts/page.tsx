@@ -1,9 +1,14 @@
 import Contacts from '@/app/_containers/Contacts';
+import AppHeader from '@/components/AppHeader';
 
 export default function ContactsPage() {
   return (
-    <main>
-      <Contacts />
-    </main>
+    <>
+      <AppHeader />
+
+      <main>
+        <Contacts />
+      </main>
+    </>
   );
 }

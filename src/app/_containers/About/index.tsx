@@ -2,7 +2,7 @@ import Section from '@/common/Section';
 
 const About = () => {
   return (
-    <Section>
+    <Section heading="Summary">
       <p>
         I am a highly skilled frontend developer with a passion for crafting
         seamless and visually appealing user experiences.
