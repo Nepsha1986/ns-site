@@ -5,7 +5,7 @@ import experience from './experience';
 
 const Experience = () => {
   return (
-    <Section id="experience" heading="Experience">
+    <Section heading="Experience">
       {experience.map((i, index) => (
         <ExpCard
           key={index}

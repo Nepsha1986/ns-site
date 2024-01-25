@@ -5,6 +5,10 @@
   --c-text-light: #c0c0c0;
   --c-text-lighter: #dedddd;
   --c-text-lightest: #fff;
+
+  --c-text-dark: #3a2d26;
+  --c-text-darker: #2d221c;
+  --c-text-darkest: #17100c;
 }
 
 * {
@@ -15,6 +19,8 @@
 
 html,
 body {
+  color: var(--c-text-light);
+  background: #3d1e07;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -35,7 +41,6 @@ h6 {
 
 p {
   margin-bottom: 1em;
-  color: var(--c-text-light);
   line-height: 1.5em;
 
   a {
@@ -44,7 +49,7 @@ p {
 }
 
 a {
-  color: var(--c-text-lightest);
+  color: inherit;
   font-weight: 400;
   text-decoration: none;
 }

@@ -1,30 +1,14 @@
 .header {
-  background-color: #3d1e08;
+  &__container {
+    padding: 1.5rem 1rem;
+  }
 
-  @media screen and (min-width: 1100px) {
-    background: rgba(187, 89, 19, 0.35);
+  &_fixed {
     position: fixed;
-    backdrop-filter: blur(5px);
+    background: transparent;
     top: 0;
     left: 0;
-    height: 100dvh;
-    width: 420px;
+    width: 100%;
     z-index: 2;
-  }
-
-  &__container {
-    padding: 5rem 1rem;
-    justify-content: space-around;
-    display: flex;
-    flex-flow: column;
-    height: 100%;
-  }
-
-  &__nav {
-    display: none;
-
-    @media screen and (min-width: 1100px) {
-      display: block;
-    }
   }
 }

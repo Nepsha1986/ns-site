@@ -1,9 +1,8 @@
 'use client';
-import { useContext } from 'react';
-import { motion } from 'framer-motion';
-import classNames from 'classnames';
 
-import HomePageContext from '@/app/context';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
@@ -11,40 +10,50 @@ const NavItem = ({
   link,
   label,
   isActive = false,
+  light = true,
 }: {
   link: string;
   label: string;
   isActive?: boolean;
+  light?: boolean;
 }) => {
   const className = classNames(styles.navItem, {
     [styles.navItem_active]: isActive,
+    [styles.navItem_light]: light,
   });
 
   return (
-    <motion.a whileTap={{ scale: 1.05 }} className={className} href={link}>
-      {label}
-    </motion.a>
+    <Link className={className} href={link}>
+      <span style={{ position: 'relative', zIndex: 2 }}>{label}</span>
+    </Link>
   );
 };
-const Navigation = () => {
-  const { activeSection } = useContext(HomePageContext);
+
+interface Props {
+  light?: boolean;
+}
+const Navigation = ({ light = true }: Props) => {
+  const pathname = usePathname();
 
   return (
     <nav className={styles.navigation}>
       <NavItem
+        label="Home"
+        link="/"
+        light={light}
+        isActive={pathname === '/'}
+      />
+      <NavItem
         label="About"
-        link="#about"
-        isActive={activeSection === 'about'}
+        link="/about"
+        light={light}
+        isActive={pathname === '/about'}
       />
       <NavItem
-        label="Experience"
-        link="#experience"
-        isActive={activeSection === 'experience'}
-      />
-      <NavItem
+        light={light}
         label="Contacts"
-        link="#contacts"
-        isActive={activeSection === 'contacts'}
+        link="/contacts"
+        isActive={pathname === '/contacts'}
       />
     </nav>
   );

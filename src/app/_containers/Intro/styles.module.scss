@@ -1,0 +1,11 @@
+.intro {
+  background: #9a735c;
+
+  &__main {
+    position: fixed;
+    padding: 30px;
+    bottom: 15%;
+    left: 20px;
+    max-width: 600px;
+  }
+}
