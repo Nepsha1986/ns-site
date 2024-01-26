@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 import AboutInfo from '@/components/AboutInfo';
 import Socials from '@/components/Socials';
+import Loading from '@/components/Loading';
 
 import styles from './styles.module.scss';
 
@@ -39,20 +40,36 @@ const House = () => {
   );
 };
 
-const Intro = () => (
-  <div className={styles.intro}>
-    <Canvas
-      camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
-      className={styles.canvas}
-    >
-      <House />
-    </Canvas>
+const Intro = () => {
+  const [isReady, setIsReady] = useState(false);
 
-    <div className={styles.intro__main}>
-      <AboutInfo />
-      <Socials />
+  return (
+    <div className={styles.intro}>
+      <Canvas
+        onCreated={() => {
+          setIsReady(true);
+        }}
+        style={{ opacity: isReady ? 1 : 0 }}
+        camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
+        className={styles.canvas}
+      >
+        <House />
+      </Canvas>
+
+      {!isReady && (
+        <div className={styles.intro__progressBar}>
+          <Loading />
+        </div>
+      )}
+
+      {isReady && (
+        <div className={styles.intro__main}>
+          <AboutInfo />
+          <Socials />
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export default Intro;
