@@ -38,7 +38,7 @@ const NavItem = ({
   });
 
   return (
-    <Link className={className} href={link}>
+    <Link className={className} href={link} scroll={false}>
       <span style={{ position: 'relative', zIndex: 2 }}>{label}</span>
     </Link>
   );
