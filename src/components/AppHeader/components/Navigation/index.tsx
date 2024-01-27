@@ -6,6 +6,21 @@ import classNames from 'classnames';
 
 import styles from './styles.module.scss';
 
+const navItems: Array<{ label: string; link: string }> = [
+  {
+    label: 'Home',
+    link: '/',
+  },
+  {
+    label: 'About',
+    link: '/about',
+  },
+  {
+    label: 'Contacts',
+    link: '/contacts',
+  },
+];
+
 const NavItem = ({
   link,
   label,
@@ -37,24 +52,15 @@ const Navigation = ({ light = true }: Props) => {
 
   return (
     <nav className={styles.navigation}>
-      <NavItem
-        label="Home"
-        link="/"
-        light={light}
-        isActive={pathname === '/'}
-      />
-      <NavItem
-        label="About"
-        link="/about"
-        light={light}
-        isActive={pathname === '/about'}
-      />
-      <NavItem
-        light={light}
-        label="Contacts"
-        link="/contacts"
-        isActive={pathname === '/contacts'}
-      />
+      {navItems.map((i) => (
+        <NavItem
+          key={i.label}
+          label={i.label}
+          link={i.link}
+          light={light}
+          isActive={pathname === i.link}
+        />
+      ))}
     </nav>
   );
 };

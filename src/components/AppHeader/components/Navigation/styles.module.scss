@@ -5,14 +5,22 @@
 }
 
 .navItem {
+  $this: &;
+
   color: #381600;
   text-transform: uppercase;
   font-size: 1rem;
   font-weight: 700;
   text-align: center;
+  transition: 0.25s scale;
+
+  &:not(#{$this}_active):hover {
+    scale: 1.05;
+  }
 
   &_active {
     position: relative;
+    cursor: default;
 
     &:after {
       width: calc(100% + 4px);

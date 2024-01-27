@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { Canvas, useLoader } from '@react-three/fiber';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import bg from '@/assets/bg_fallback.webp';
 
 import AboutInfo from '@/components/AboutInfo';
 import Socials from '@/components/Socials';
@@ -49,7 +50,12 @@ const Intro = () => {
         onCreated={() => {
           setIsReady(true);
         }}
-        style={{ opacity: isReady ? 1 : 0 }}
+        style={{
+          opacity: isReady ? 1 : 0,
+          backgroundImage: `url(${bg.src})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
         camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
         className={styles.canvas}
       >
