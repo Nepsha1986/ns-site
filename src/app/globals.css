@@ -46,6 +46,11 @@ p {
 
   a {
     text-decoration: underline;
+    transition: 0.3s color;
+
+    &:hover {
+      color: var(--c-text-lightest);
+    }
   }
 }
 

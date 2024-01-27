@@ -4,9 +4,7 @@ import Section from '@/common/Section';
 export default function Terms() {
   return (
     <main>
-      <Section>
-        <h1>Terms and Conditions</h1>
-
+      <Section heading="Terms and Conditions">
         <ol>
           <li>
             <p>
