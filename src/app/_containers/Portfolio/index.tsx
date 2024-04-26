@@ -176,7 +176,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <Section heading="Projects">
+    <Section heading="Projects" hidden>
       <p>
         The list below represents the projects I have worked on throughout my
         career. Many of them have undergone changes for various reasons,
