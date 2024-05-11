@@ -1,17 +1,18 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Section from '@/common/Section';
 import Chip from '@/common/Chip';
 import { projects } from '@/app/_containers/Portfolio/projects';
 
 const Portfolio = () => {
+  const [hash, setHash] = useState<string>();
+
+  useEffect(() => {
+    setHash(window.location.hash);
+  }, []);
   return (
-    <Section
-      hidden={window.location.hash !== '#projects'}
-      heading="Projects"
-      id="projects"
-    >
+    <Section hidden={hash !== '#projects'} heading="Projects" id="projects">
       <p>
         The list below represents the projects I have worked on throughout my
         career. Many of them have undergone changes for various reasons,
