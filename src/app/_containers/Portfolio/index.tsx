@@ -1,18 +1,12 @@
-'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import Section from '@/common/Section';
 import Chip from '@/common/Chip';
 import { projects } from '@/app/_containers/Portfolio/projects';
 
 const Portfolio = () => {
-  const [hash, setHash] = useState<string>();
-
-  useEffect(() => {
-    setHash(window.location.hash);
-  }, []);
   return (
-    <Section hidden={hash !== '#projects'} heading="Projects" id="projects">
+    <Section heading="Projects" id="projects">
       <p>
         The list below represents the projects I have worked on throughout my
         career. Many of them have undergone changes for various reasons,
@@ -56,8 +50,8 @@ const Portfolio = () => {
               </td>
               <td>
                 {i.link ? (
-                  <a href={i.link} target="_blank">
-                    {i.link.replace(/^https?:\/\/(www\.)?/, '')}
+                  <a href={i.link.href} target="_blank">
+                    {i.link.label}
                   </a>
                 ) : (
                   '-'
@@ -72,7 +66,7 @@ const Portfolio = () => {
         <strong>
           IMPORTANT: This list should not be considered as an objective
           assessment of my skills and knowledge, but rather as a compilation of
-          the technologies I have had the opportunity to work with!
+          the technologies I have had the opportunity to work with.
         </strong>
       </p>
     </Section>

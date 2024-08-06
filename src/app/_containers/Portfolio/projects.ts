@@ -31,23 +31,52 @@ type Project = {
   year: number | string;
   company: Company;
   technologies: string[];
-  link?: string;
+  link?: {
+    label: string;
+    href: string;
+  };
 };
 
 export const projects: Project[] = [
+  {
+    name: 'AquaJoy Club',
+    year: '2024 - present',
+    technologies: ['Next.js', 'React.js', 'TypeScript', 'SCSS'],
+    company: companies.personal,
+    link: {
+      label: 'aquajoy.club',
+      href: 'https://aquajoy.club',
+    },
+  },
+  {
+    name: 'Freshwater Fishes Knowledge Base',
+    year: '2024 - present',
+    technologies: ['MDX'],
+    company: companies.personal,
+    link: {
+      label: 'link',
+      href: 'https://github.com/Nepsha1986/handbook-freshwater-fish',
+    },
+  },
   {
     name: 'Gift Ideas',
     year: '2024 - present',
     technologies: ['Astro', 'Next.js', 'React.js', 'TypeScript', 'Auth0'],
     company: companies.personal,
-    link: 'https://gift-idea.co',
+    link: {
+      label: 'gift-idea.co',
+      href: 'https://gift-idea.co',
+    },
   },
   {
     name: 'Personal Website',
     year: 2023,
     technologies: ['Next.js', 'React.js', 'TypeScript', 'SCSS', 'Three.js'],
     company: companies.personal,
-    link: 'https://alex.gift-idea.co',
+    link: {
+      label: 'alex.gift-idea.co',
+      href: 'https://alex.gift-idea.co',
+    },
   },
   {
     name: 'Rsuite',
@@ -57,14 +86,20 @@ export const projects: Project[] = [
       name: 'open-source',
       url: 'https://github.com/rsuite/rsuite',
     },
-    link: 'https://rsuitejs.com',
+    link: {
+      label: 'rsuitejs.com',
+      href: 'https://rsuitejs.com',
+    },
   },
   {
     name: 'Paralax Demo',
     year: 2023,
     technologies: ['Next.js', 'React.js', 'TypeScript', 'SCSS'],
     company: companies.personal,
-    link: 'https://fable.gift-idea.co',
+    link: {
+      label: 'fable.gift-idea.co',
+      href: 'https://fable.gift-idea.co',
+    },
   },
   {
     name: 'Financial Application',
@@ -95,69 +130,99 @@ export const projects: Project[] = [
     year: 2019,
     company: companies.fmedia,
     technologies: ['WordPress', 'PHP', 'JavaScript', 'SCSS', 'Unyson'],
-    link: 'https://www.abs-werbestudio.de',
+    link: {
+      label: 'abs-werbestudio.de',
+      href: 'https://www.abs-werbestudio.de',
+    },
   },
   {
     name: 'Coralaxy',
     year: 2019,
     company: companies.fmedia,
     technologies: ['PrestaShop', 'PHP', 'JQuery', 'SCSS'],
-    link: 'https://coralaxy.de',
+    link: {
+      label: 'coralaxy.de',
+      href: 'https://coralaxy.de',
+    },
   },
   {
     name: 'Tutkit',
     year: '2017 - 2018',
     company: companies.fmedia,
     technologies: ['Laravel', 'Vue.js', 'PHP', 'JavaScript', 'SCSS'],
-    link: 'https://www.tutkit.com',
+    link: {
+      label: 'tutkit.com',
+      href: 'https://www.tutkit.com',
+    },
   },
   {
     name: 'Spitzbergen Adventures',
     year: 2018,
     company: companies.fmedia,
     technologies: ['WordPress', 'PHP', 'JavaScript', 'SCSS'],
-    link: 'https://www.spitzbergen-adventures.com',
+    link: {
+      label: 'spitzbergen-adventures.com',
+      href: 'https://www.spitzbergen-adventures.com',
+    },
   },
   {
     name: 'Mandt Buero',
     year: 2017,
     company: companies.fmedia,
     technologies: ['WordPress', 'ACF', 'PHP', 'JQuery', 'SCSS'],
-    link: 'https://www.mandt-buero.de',
+    link: {
+      label: 'mandt-buero.de',
+      href: 'https://www.mandt-buero.de',
+    },
   },
   {
     name: 'Zwei Wassser',
     year: 2017,
     company: companies.fmedia,
     technologies: ['WordPress', 'ACF', 'PHP', 'JQuery', 'SCSS'],
-    link: 'https://zwei-wasser.de',
+    link: {
+      label: 'zwei-wasser.de',
+      href: 'https://zwei-wasser.de',
+    },
   },
   {
     name: 'Tenth Congressional District Democrats',
     year: 2016,
     company: companies.upwork,
     technologies: ['WordPress', 'PHP', 'JavaScript'],
-    link: 'https://tenthdems.org',
+    link: {
+      label: 'tenthdems.org',
+      href: 'https://tenthdems.org',
+    },
   },
   {
     name: 'Mobile SMS Marketing',
     year: 2016,
     company: companies.upwork,
     technologies: ['WordPress', 'PHP', 'JQuery', 'SCSS'],
-    link: 'https://mobilesmsmarketing.ca',
+    link: {
+      label: 'mobilesmsmarketing.ca',
+      href: 'https://mobilesmsmarketing.ca',
+    },
   },
   {
     name: 'Precision Pilates',
     year: 2016,
     company: companies.upwork,
     technologies: ['WordPress', 'PHP', 'JQuery'],
-    link: 'https://www.precisionpilatesllc.com',
+    link: {
+      label: 'precisionpilatesllc.com',
+      href: 'https://www.precisionpilatesllc.com',
+    },
   },
   {
     name: 'Sivananda Ashram Yoga Ranch',
     year: 2015,
     company: companies.upwork,
     technologies: ['WordPress', 'PHP', 'CSS'],
-    link: 'https://sivanandayogaranch.org',
+    link: {
+      label: 'sivanandayogaranch.org',
+      href: 'https://sivanandayogaranch.org',
+    },
   },
 ];

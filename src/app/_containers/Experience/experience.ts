@@ -11,7 +11,7 @@ type ExperienceItem = {
 
 const experience: ExperienceItem[] = [
   {
-    dateRange: 'July 2021 - September 2023',
+    dateRange: 'July 2021 - 2024',
     company: {
       name: 'Fundomate',
       link: 'https://fundomate.com',
