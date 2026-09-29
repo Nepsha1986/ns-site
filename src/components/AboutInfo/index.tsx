@@ -32,11 +32,11 @@ const AboutInfo = () => {
       animate="visible"
     >
       <motion.p variants={item} className={styles.aboutInfo__eyebrow}>
-        <span className={styles.aboutInfo__status} /> Hi there, I&apos;m
+        Hi there, I&apos;m
       </motion.p>
 
       <motion.h1 variants={item} className={styles.aboutInfo__heading}>
-        Alex <em>Nepsha</em>
+        Alex Nepsha
       </motion.h1>
 
       <motion.p variants={item} className={styles.aboutInfo__subHeading}>

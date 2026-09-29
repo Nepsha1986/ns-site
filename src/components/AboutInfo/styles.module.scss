@@ -16,38 +16,15 @@
   }
 
   &__eyebrow {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
     color: var(--c-text-lighter);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-  }
-
-  &__status {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #6fd36f;
-    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0.6);
-    animation: pulse 2s infinite;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
   }
 
   &__heading {
     font-size: clamp(2.8rem, 7vw, 4.5rem);
     line-height: 1;
     margin-bottom: 0.6rem;
-
-    em {
-      font-style: italic;
-      background: var(--gradient-primary);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      padding-right: 0.08em;
-    }
   }
 
   &__subHeading {
@@ -109,17 +86,5 @@
         border-color: var(--c-primary-light);
       }
     }
-  }
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(111, 211, 111, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0);
   }
 }
