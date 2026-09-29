@@ -5,7 +5,7 @@ import experience from './experience';
 
 const Experience = () => {
   return (
-    <Section heading="Experience">
+    <Section heading="Experience" eyebrow="Career path">
       {experience.map((i, index) => (
         <ExpCard
           key={index}
@@ -17,7 +17,7 @@ const Experience = () => {
         />
       ))}
 
-      <footer style={{ marginTop: '20px' }}>
+      <footer style={{ marginTop: '2.5rem' }}>
         <DownloadCV />
       </footer>
     </Section>

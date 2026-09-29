@@ -9,14 +9,21 @@ const linkedinLink = 'https://www.linkedin.com/in/alex-nepsha-851a23115/';
 
 const SocialItem = ({
   link,
+  label,
   icon,
 }: {
   link: string;
+  label: string;
   icon: React.ReactNode;
 }) => {
   return (
     <li className={styles.socials__listItem}>
-      <a className={styles.socials__link} href={link} target="_blank">
+      <a
+        className={styles.socials__link}
+        href={link}
+        target="_blank"
+        aria-label={label}
+      >
         {icon}
       </a>
     </li>
@@ -27,10 +34,12 @@ const Socials = () => {
     <ul className={styles.socials}>
       <SocialItem
         link={gitHubLink}
+        label="GitHub"
         icon={<FontAwesomeIcon icon={faGithub} />}
       />
       <SocialItem
         link={linkedinLink}
+        label="LinkedIn"
         icon={<FontAwesomeIcon icon={faLinkedin} />}
       />
     </ul>

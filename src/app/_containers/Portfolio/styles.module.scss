@@ -1,0 +1,123 @@
+.table {
+  margin: 2rem 0;
+  font-size: 0.9rem;
+
+  thead th {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--c-text-lighter);
+    padding-bottom: 0.8rem;
+  }
+
+  tbody tr {
+    transition: background 0.25s;
+
+    &:hover {
+      background: var(--c-surface-hover);
+    }
+  }
+
+  td {
+    padding: 0.9rem 0.5rem;
+    vertical-align: middle;
+  }
+
+  a {
+    color: var(--c-text-lighter);
+    transition: color 0.25s;
+
+    &:hover {
+      color: var(--c-primary-light);
+    }
+  }
+
+  // Stack rows into cards on narrow screens
+  @media (max-width: 860px) {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    tr {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.4rem 1rem;
+      padding: 1rem 1.1rem;
+      border-radius: var(--radius);
+      background: var(--c-surface);
+      border: 1px solid var(--c-border);
+    }
+
+    td {
+      padding: 0 !important;
+
+      &:before {
+        content: attr(data-label);
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+}
+
+.table__year {
+  white-space: nowrap;
+  color: var(--c-text-light);
+
+  @media (max-width: 860px) {
+    grid-column: 1 / -1;
+    font-size: 0.8rem;
+
+    &:before {
+      display: none !important;
+    }
+  }
+}
+
+.table__name {
+  font-weight: 400;
+  color: var(--c-text-lightest);
+
+  @media (max-width: 860px) {
+    grid-column: 1 / -1;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+
+    &:before {
+      display: none !important;
+    }
+  }
+}
+
+.table__tech {
+  display: flex;
+  gap: 0.3rem;
+  flex-flow: row wrap;
+}
+
+.table__techCell {
+  @media (max-width: 860px) {
+    grid-column: 1 / -1;
+    order: 1;
+    margin-top: 0.3rem;
+  }
+}
+
+.note {
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--c-primary-light);
+  border-radius: 0 10px 10px 0;
+  background: rgba(236, 123, 50, 0.06);
+  font-size: 0.9rem;
+}

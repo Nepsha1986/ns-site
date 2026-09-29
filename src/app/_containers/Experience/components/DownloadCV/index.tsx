@@ -14,8 +14,8 @@ const DownloadCV = () => {
   };
 
   return (
-    <Button color="transparent" size="lg" onClick={handleClick}>
-      Download full CV <Icon style={{ marginLeft: '10px' }} icon={faDownload} />
+    <Button color="dark" size="lg" onClick={handleClick}>
+      Download full CV <Icon icon={faDownload} />
     </Button>
   );
 };

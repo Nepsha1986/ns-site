@@ -16,7 +16,7 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ marginBottom: '2rem' }}>
+    <form onSubmit={handleSubmit}>
       <label htmlFor="email">Email Address</label>
       <input ref={emailRef} id="email" type="email" name="email" required />
       <ValidationError prefix="Email" field="email" errors={state.errors} />
@@ -31,18 +31,18 @@ const ContactForm = () => {
         rows={5}
       />
       <ValidationError prefix="Message" field="message" errors={state.errors} />
-      <Button type="submit" disabled={state.submitting}>
-        Submit
+      <Button type="submit" size="md" disabled={state.submitting}>
+        {state.submitting ? 'Sending…' : 'Send message'}
       </Button>
 
       {!!state.errors && (
-        <p style={{ marginTop: '1rem', color: '#9a0505' }}>
+        <p style={{ marginTop: '1rem', color: '#ff8a8a' }}>
           Something went wrong, please try again later.
         </p>
       )}
 
       {state.succeeded && (
-        <p style={{ marginTop: '1rem', color: '#24810a' }}>
+        <p style={{ marginTop: '1rem', color: '#8fe08f' }}>
           Thank you for reaching out! Your message has been successfully sent.
         </p>
       )}

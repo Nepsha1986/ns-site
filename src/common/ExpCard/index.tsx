@@ -36,15 +36,14 @@ const ExpCard = ({
       target="_blank"
       rel="noreferrer"
       className={styles.expCard}
-      whileHover={{
-        scale: 1.01,
-        backgroundColor: 'rgba(0, 0, 0, 0.08)',
-      }}
+      whileHover={{ x: 4 }}
       transition={{ duration: 0.3 }}
     >
       <div className={styles.expCard__dateRange}>{dateRange}</div>
 
       <div className={styles.expCard__main}>
+        <div className={styles.expCard__mobileDate}>{dateRange}</div>
+
         {!!company && (
           <h2 className={styles.expCard__company}>
             {company.name}{' '}

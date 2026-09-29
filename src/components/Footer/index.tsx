@@ -17,10 +17,14 @@ const Footer = ({ fixed = false }: Props) => {
     <footer className={classname}>
       <div className={styles.footer__container}>
         <p style={{ marginBottom: 0 }}>
-          © 2024, Alex Nepsha. All Rights Reserved.
+          © {new Date().getFullYear()}, Alex Nepsha. All Rights Reserved.
         </p>
 
-        <Link href="/terms-and-conditions" target="_blank">
+        <Link
+          className={styles.footer__link}
+          href="/terms-and-conditions"
+          target="_blank"
+        >
           Terms and Conditions
         </Link>
       </div>

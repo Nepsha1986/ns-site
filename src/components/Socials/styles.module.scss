@@ -2,19 +2,31 @@
   list-style: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 15px;
+  gap: 0.5rem;
 
   &__link {
-    width: 32px;
-    height: 32px;
-    font-size: 32px;
-    color: #fff;
-    display: block;
-    opacity: 0.75;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    color: var(--c-text-lighter);
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 240, 225, 0.2);
+    transition:
+      color 0.25s,
+      border-color 0.25s,
+      transform 0.25s;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
 
     &:hover {
-      opacity: 1;
+      color: #fff;
+      border-color: var(--c-primary-light);
+      transform: translateY(-2px);
     }
   }
 }

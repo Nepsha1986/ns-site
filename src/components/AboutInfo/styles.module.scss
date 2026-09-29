@@ -1,22 +1,125 @@
 .aboutInfo {
-  text-shadow: 1px 1px 1px #000;
-  text-align: center;
+  padding: 2rem;
+  border-radius: 24px;
+  background: linear-gradient(
+    150deg,
+    rgba(31, 16, 8, 0.72),
+    rgba(31, 16, 8, 0.5)
+  );
+  border: 1px solid rgba(255, 240, 225, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+  }
+
+  &__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--c-text-lighter);
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  &__status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #6fd36f;
+    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0.6);
+    animation: pulse 2s infinite;
+  }
 
   &__heading {
-    color: var(--c-text-lightest);
-    font-size: 3rem;
-    margin-bottom: 0.3rem;
+    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+
+    em {
+      font-style: italic;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding-right: 0.08em;
+    }
   }
 
   &__subHeading {
     color: var(--c-text-lightest);
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 400;
+    margin-bottom: 1.25rem;
   }
 
   &__main {
     p {
-      color: var(--c-text-lightest);
+      color: var(--c-text-lighter);
     }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin-top: 1.5rem;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--gradient-primary);
+    box-shadow: 0 10px 24px -10px rgba(236, 123, 50, 0.9);
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+
+    span {
+      transition: transform 0.25s;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -10px rgba(236, 123, 50, 1);
+
+      span {
+        transform: translateX(4px);
+      }
+    }
+
+    &_ghost {
+      background: rgba(255, 240, 225, 0.06);
+      border: 1px solid rgba(255, 240, 225, 0.25);
+      box-shadow: none;
+
+      &:hover {
+        box-shadow: none;
+        border-color: var(--c-primary-light);
+      }
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(111, 211, 111, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(111, 211, 111, 0);
   }
 }

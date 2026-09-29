@@ -4,9 +4,11 @@ import Section from '@/common/Section';
 import Chip from '@/common/Chip';
 import { projects } from '@/app/_containers/Portfolio/projects';
 
+import styles from './styles.module.scss';
+
 const Portfolio = () => {
   return (
-    <Section heading="Projects" id="projects">
+    <Section heading="Projects" eyebrow="Portfolio" id="projects">
       <p>
         The list below represents the projects I have worked on throughout my
         career. Many of them have undergone changes for various reasons,
@@ -20,7 +22,7 @@ const Portfolio = () => {
         open-source contributions.
       </p>
 
-      <table style={{ margin: '2rem 0' }}>
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Year</th>
@@ -34,21 +36,25 @@ const Portfolio = () => {
         <tbody>
           {projects.map((i) => (
             <tr key={i.name}>
-              <td>{i.year}</td>
-              <td>{i.name}</td>
-              <td>
+              <td data-label="Year" className={styles.table__year}>
+                {i.year}
+              </td>
+              <td data-label="Project" className={styles.table__name}>
+                {i.name}
+              </td>
+              <td data-label="Company">
                 <a href={i.company.url} target="_blank">
                   {i.company.name}
                 </a>
               </td>
-              <td
-                style={{ display: 'flex', gap: '0.3rem', flexFlow: 'row wrap' }}
-              >
-                {i.technologies.map((item) => (
-                  <Chip key={item} label={item} />
-                ))}
+              <td data-label="Technologies" className={styles.table__techCell}>
+                <div className={styles.table__tech}>
+                  {i.technologies.map((item) => (
+                    <Chip key={item} label={item} />
+                  ))}
+                </div>
               </td>
-              <td>
+              <td data-label="Link">
                 {i.link ? (
                   <a href={i.link.href} target="_blank">
                     {i.link.label}
@@ -62,7 +68,7 @@ const Portfolio = () => {
         </tbody>
       </table>
 
-      <p>
+      <p className={styles.note}>
         <strong>
           IMPORTANT: This list should not be considered as an objective
           assessment of my skills and knowledge, but rather as a compilation of

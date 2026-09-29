@@ -4,7 +4,7 @@ import AppHeader from '@/components/AppHeader';
 export default function Home() {
   return (
     <>
-      <AppHeader fixed lightNav={false} />
+      <AppHeader fixed />
 
       <main>
         <Intro />
