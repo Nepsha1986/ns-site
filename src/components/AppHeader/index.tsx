@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import classNames from 'classnames';
 
 import Navigation from './components/Navigation';
@@ -19,10 +18,6 @@ const SiteHeader = ({ fixed = false, lightNav = true }: Props) => {
   return (
     <header className={classname}>
       <div className={styles.header__container}>
-        <Link href="/" className={styles.header__logo} aria-label="Home">
-          AN<span>.</span>
-        </Link>
-
         <div className={styles.header__nav}>
           <Navigation light={lightNav} />
         </div>
