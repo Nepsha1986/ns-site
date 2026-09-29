@@ -1,6 +1,12 @@
 .header {
   &__container {
-    padding: 1.5rem 2rem;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 1rem 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
   }
 
   &_fixed {
@@ -10,5 +16,11 @@
     left: 0;
     width: 100%;
     z-index: 2;
+  }
+
+  &_sticky {
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
 }

@@ -1,0 +1,54 @@
+.contacts {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 3rem;
+  align-items: start;
+
+  @media (max-width: 860px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  &__lead {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+    line-height: 1.5;
+    color: var(--c-text-lightest);
+  }
+
+  &__email {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.5rem 0 1.5rem;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius);
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    color: var(--c-text-lightest);
+    transition:
+      border-color 0.3s,
+      background 0.3s;
+
+    &:hover {
+      border-color: var(--c-primary-light);
+      background: var(--c-surface-hover);
+    }
+  }
+
+  &__emailIcon {
+    color: var(--c-primary-light);
+  }
+
+  &__form {
+    padding: 2rem;
+    border-radius: 24px;
+    background: var(--c-surface);
+    border: 1px solid var(--c-border);
+    box-shadow: 0 30px 60px -40px rgba(0, 0, 0, 0.8);
+
+    @media (max-width: 480px) {
+      padding: 1.25rem;
+    }
+  }
+}

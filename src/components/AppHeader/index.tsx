@@ -1,5 +1,6 @@
-import Navigation from './components/Navigation';
 import classNames from 'classnames';
+
+import Navigation from './components/Navigation';
 
 import styles from './styles.module.scss';
 
@@ -11,6 +12,7 @@ interface Props {
 const SiteHeader = ({ fixed = false, lightNav = true }: Props) => {
   const classname = classNames(styles.header, {
     [styles.header_fixed]: fixed,
+    [styles.header_sticky]: !fixed,
   });
 
   return (

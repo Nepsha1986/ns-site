@@ -6,7 +6,6 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import bg from '@/assets/bg_fallback.webp';
 
 import AboutInfo from '@/components/AboutInfo';
-import Socials from '@/components/Socials';
 import Loading from '@/components/Loading';
 
 import styles from './styles.module.scss';
@@ -68,10 +67,11 @@ const Intro = () => {
         </div>
       )}
 
+      <div className={styles.intro__overlay} aria-hidden />
+
       {isReady && (
         <div className={styles.intro__main}>
           <AboutInfo />
-          <Socials />
         </div>
       )}
     </div>

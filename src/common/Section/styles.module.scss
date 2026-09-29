@@ -1,7 +1,31 @@
 .section {
   &__container {
-    padding: 3rem 15px;
+    padding: 4rem 20px;
     margin: 0 auto;
     max-width: 1100px;
+  }
+
+  &__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--c-primary-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+
+    &:before {
+      content: '';
+      width: 2rem;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
+  }
+
+  &__heading {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    margin-bottom: 2rem;
   }
 }

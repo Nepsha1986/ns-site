@@ -1,8 +1,11 @@
 .chip {
-  padding: 0.5rem 1rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 30px;
-  background: rgba(0, 0, 0, 0.15);
-  color: var(--c-primary-light);
+  background: rgba(236, 123, 50, 0.08);
+  border: 1px solid rgba(236, 123, 50, 0.25);
+  color: #f3a06a;
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  white-space: nowrap;
 }
