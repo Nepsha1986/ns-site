@@ -55,4 +55,5 @@
   opacity: 0;
   height: 100dvh !important;
   transition: opacity 1s;
+  touch-action: none;
 }

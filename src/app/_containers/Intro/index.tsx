@@ -1,65 +1,52 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Canvas, useLoader } from '@react-three/fiber';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import React, { Suspense, useCallback, useState } from 'react';
+import { Canvas } from '@react-three/fiber';
 import bg from '@/assets/bg_fallback.webp';
 
 import AboutInfo from '@/components/AboutInfo';
 import Loading from '@/components/Loading';
+import useMediaQuery from '@/hooks/useMediaQuery';
 
+import HouseScene from './components/HouseScene';
 import styles from './styles.module.scss';
 
-const HouseModel = React.memo(() => {
-  const data = useLoader(GLTFLoader, '/house.glb');
-  return <primitive object={data.scene} />;
-});
-
-HouseModel.displayName = 'HouseModel';
-
-const House = () => {
-  const [angleX, setXAngle] = useState(0.5);
-  const [angleY, setYAngle] = useState(0);
-
-  useEffect(() => {
-    const trackMove = (e: MouseEvent) => {
-      setXAngle(e.x / 8000 + 0.5);
-      setYAngle(e.y / 3000);
-    };
-    document.addEventListener('mousemove', trackMove);
-
-    return () => {
-      document.removeEventListener('mousemove', trackMove);
-    };
-  }, []);
-
-  return (
-    <mesh rotation={[angleY, angleX, 0]}>
-      <HouseModel />
-    </mesh>
-  );
+const MODEL_URL = {
+  desktop: '/house.glb',
+  mobile: '/house-mobile.glb',
 };
 
 const Intro = () => {
   const [isReady, setIsReady] = useState(false);
+  const [isInfoExpanded, setIsInfoExpanded] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  const handleReady = useCallback(() => setIsReady(true), []);
+  const handleSceneTouch = useCallback(() => setIsInfoExpanded(false), []);
 
   return (
     <div className={styles.intro}>
-      <Canvas
-        onCreated={() => {
-          setIsReady(true);
-        }}
-        style={{
-          opacity: isReady ? 1 : 0,
-          backgroundImage: `url(${bg.src})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-        camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
-        className={styles.canvas}
-      >
-        <House />
-      </Canvas>
+      {isMobile !== null && (
+        <Canvas
+          dpr={[1, 2]}
+          style={{
+            opacity: isReady ? 1 : 0,
+            backgroundImage: `url(${bg.src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+          camera={{ position: [-1, 2, 5], rotation: [0, 0, 0] }}
+          className={styles.canvas}
+        >
+          <Suspense fallback={null}>
+            <HouseScene
+              url={isMobile ? MODEL_URL.mobile : MODEL_URL.desktop}
+              onReady={handleReady}
+              onTouchStart={handleSceneTouch}
+            />
+          </Suspense>
+        </Canvas>
+      )}
 
       {!isReady && (
         <div className={styles.intro__progressBar}>
@@ -71,7 +58,11 @@ const Intro = () => {
 
       {isReady && (
         <div className={styles.intro__main}>
-          <AboutInfo />
+          <AboutInfo
+            collapsible={!!isMobile}
+            expanded={isInfoExpanded}
+            onExpandedChange={setIsInfoExpanded}
+          />
         </div>
       )}
     </div>
