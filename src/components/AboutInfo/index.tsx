@@ -77,6 +77,7 @@ const AboutInfo = ({
       variants={container}
       initial="hidden"
       animate="visible"
+      exit={{ opacity: 0, y: 16, transition: { duration: 0.25 } }}
       onPanEnd={collapsible ? handlePanEnd : undefined}
     >
       {collapsible && <span className={styles.aboutInfo__handle} aria-hidden />}

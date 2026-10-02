@@ -1,0 +1,110 @@
+.preview {
+  position: relative;
+  padding: 2rem;
+  border-radius: 24px;
+  background: linear-gradient(
+    150deg,
+    rgba(31, 16, 8, 0.78),
+    rgba(31, 16, 8, 0.58)
+  );
+  border: 1px solid rgba(255, 240, 225, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+  }
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 240, 225, 0.2);
+    background: rgba(255, 240, 225, 0.06);
+    color: var(--c-text-lightest);
+    cursor: pointer;
+    transition: border-color 0.25s;
+
+    &:hover {
+      border-color: var(--c-primary-light);
+    }
+  }
+
+  &__eyebrow {
+    color: var(--c-primary-light);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    padding-right: 3rem;
+  }
+
+  &__title {
+    color: var(--c-text-lightest);
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    margin-bottom: 0.75rem;
+    padding-right: 2.5rem;
+  }
+
+  &__text {
+    color: var(--c-text-lighter);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.4rem;
+    border: 0;
+    border-radius: 30px;
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: var(--gradient-primary);
+    box-shadow: 0 10px 24px -10px rgba(236, 123, 50, 0.9);
+    cursor: pointer;
+    transition:
+      transform 0.25s,
+      box-shadow 0.25s;
+
+    span {
+      transition: transform 0.25s;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+
+      span {
+        transform: translateX(4px);
+      }
+    }
+
+    &_ghost {
+      background: rgba(255, 240, 225, 0.06);
+      border: 1px solid rgba(255, 240, 225, 0.25);
+      box-shadow: none;
+
+      &:hover {
+        border-color: var(--c-primary-light);
+      }
+    }
+  }
+}
