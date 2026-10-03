@@ -33,8 +33,11 @@ const About = () => {
             <a href="https://gift-idea.co/en-us/" target="_blank">
               gift-idea.co
             </a>
-            , curating and presenting unique gift ideas to showcase my passion
-            for creating engaging online experiences.
+            , curating and presenting unique gift ideas, and{' '}
+            <a href="https://aquajoy.club" target="_blank">
+              aquajoy.club
+            </a>
+            , a resource for aquarium hobbyists.
           </p>
         </div>
 

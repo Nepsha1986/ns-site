@@ -4,6 +4,10 @@ interface Company {
 }
 
 const companies: Record<string, Company> = {
+  paysera: {
+    name: 'Paysera',
+    url: 'https://www.paysera.com/',
+  },
   personal: {
     name: '-',
     url: 'https://github.com/Nepsha1986',
@@ -35,9 +39,24 @@ type Project = {
     label: string;
     href: string;
   };
+  nda?: boolean;
 };
 
 export const projects: Project[] = [
+  {
+    name: 'Checkout',
+    year: '2024 - present',
+    company: companies.paysera,
+    technologies: [
+      'React.js',
+      'TypeScript',
+      'RTK Query',
+      'Tailwind CSS',
+      'Module Federation',
+      'Jest',
+    ],
+    nda: true,
+  },
   {
     name: 'AquaJoy Club',
     year: '2024 - present',
