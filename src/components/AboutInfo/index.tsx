@@ -96,7 +96,7 @@ const AboutInfo = ({
           </motion.h1>
 
           <motion.p variants={item} className={styles.aboutInfo__subHeading}>
-            Senior Frontend Developer
+            Senior Frontend Engineer
           </motion.p>
         </div>
 
