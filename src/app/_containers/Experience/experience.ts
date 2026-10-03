@@ -11,14 +11,14 @@ type ExperienceItem = {
 
 const experience: ExperienceItem[] = [
   {
-    dateRange: 'September 2024 - 2026',
+    dateRange: 'September 2024 - Present',
     company: {
       name: 'Paysera',
       link: 'https://www.paysera.com',
     },
     position: 'Senior Frontend Engineer',
     summary:
-      'Developed and maintained a merchant-facing Checkout management system for a fintech business platform, built as a micro-frontend using Webpack 5 Module Federation. The application covers the full order-to-payment lifecycle: payment projects, payment links, real-time payment tracking, refunds and project settings.',
+      'Developed and maintained a merchant-facing Checkout management system for a fintech business platform, built as a micro-frontend using Webpack 5 Module Federation.',
     techStack: [
       'React',
       'TypeScript',
