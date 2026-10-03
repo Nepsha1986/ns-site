@@ -9,7 +9,7 @@ const companies: Record<string, Company> = {
     url: 'https://www.paysera.com/',
   },
   personal: {
-    name: '-',
+    name: 'Personal',
     url: 'https://github.com/Nepsha1986',
   },
   upwork: {
