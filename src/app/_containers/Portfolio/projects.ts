@@ -44,8 +44,8 @@ type Project = {
 
 export const projects: Project[] = [
   {
-    name: 'Checkout',
-    year: '2024 - present',
+    name: 'Checkout Platform',
+    year: '2024 - 2026',
     company: companies.paysera,
     technologies: [
       'React.js',
@@ -125,24 +125,28 @@ export const projects: Project[] = [
     year: '2021 - 2023',
     company: companies.fundomate,
     technologies: ['React.js', 'MobX', 'TypeScript', 'Jest', 'Micro Frontends'],
+    nda: true,
   },
   {
     name: 'Management Dashboard',
     year: '2021 - 2023',
     company: companies.fundomate,
     technologies: ['React.js', 'MobX', 'React Query', 'Micro Frontends'],
+    nda: true,
   },
   {
     name: 'Internal UI Kit',
     year: '2021 - 2023',
     company: companies.fundomate,
     technologies: ['React.js', 'TypeScript', 'SCSS', 'Storybook'],
+    nda: true,
   },
   {
     name: 'Gift Card Mall',
     year: '2019 - 2021',
     company: companies.spd,
     technologies: ['Drupal', 'React.js', 'LESS', 'Node.js'],
+    nda: true,
   },
   {
     name: 'Abs Werbestudio',
