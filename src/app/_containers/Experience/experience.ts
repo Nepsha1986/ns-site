@@ -11,6 +11,29 @@ type ExperienceItem = {
 
 const experience: ExperienceItem[] = [
   {
+    dateRange: 'September 2024 - Present',
+    company: {
+      name: 'Paysera',
+      link: 'https://www.paysera.com',
+    },
+    position: 'Senior Frontend Engineer',
+    summary:
+      'Developed and maintained a merchant-facing Checkout management system for a fintech business platform, built as a micro-frontend using Webpack 5 Module Federation.',
+    techStack: [
+      'React',
+      'TypeScript',
+      'RTK Query',
+      'React Router',
+      'React Hook Form',
+      'Tailwind CSS',
+      'Module Federation',
+      'Jest',
+      'React Testing Library',
+      'i18next',
+    ],
+  },
+
+  {
     dateRange: 'July 2021 - 2024',
     company: {
       name: 'Fundomate',

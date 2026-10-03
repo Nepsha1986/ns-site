@@ -59,6 +59,8 @@ const Portfolio = () => {
                   <a href={i.link.href} target="_blank">
                     {i.link.label}
                   </a>
+                ) : i.nda ? (
+                  'Under NDA'
                 ) : (
                   '-'
                 )}

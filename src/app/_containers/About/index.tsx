@@ -16,16 +16,16 @@ const About = () => {
       <div className={styles.about}>
         <div className={styles.about__text}>
           <p className={styles.about__lead}>
-            I am a highly skilled frontend developer with a passion for crafting
-            seamless and visually appealing user experiences.
+            Senior Frontend Engineer with 10+ years of hands-on experience
+            shipping user-facing products in fintech, e-commerce, and SaaS.
           </p>
 
           <p>
-            Experienced in diverse web technologies, I creatively transform
-            design mockups into responsive websites. I specialize in optimizing
-            site performance, and turning ideas into user-friendly interfaces.
-            Committed to staying current with industry trends, I deliver
-            high-quality code.
+            My core strengths are React, TypeScript, and modular frontend
+            architectures. I have built merchant-facing payment platforms
+            processing real-time financial operations, reusable UI libraries
+            adopted across multiple products, and onboarding systems
+            integrating third-party partners.
           </p>
 
           <p>
@@ -33,8 +33,11 @@ const About = () => {
             <a href="https://gift-idea.co/en-us/" target="_blank">
               gift-idea.co
             </a>
-            , curating and presenting unique gift ideas to showcase my passion
-            for creating engaging online experiences.
+            , curating and presenting unique gift ideas, and{' '}
+            <a href="https://aquajoy.club" target="_blank">
+              aquajoy.club
+            </a>
+            , a resource for aquarium hobbyists.
           </p>
         </div>
 

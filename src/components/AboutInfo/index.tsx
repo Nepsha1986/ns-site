@@ -96,7 +96,7 @@ const AboutInfo = ({
           </motion.h1>
 
           <motion.p variants={item} className={styles.aboutInfo__subHeading}>
-            Senior Frontend Developer
+            Senior Frontend Engineer
           </motion.p>
         </div>
 
@@ -143,7 +143,11 @@ const AboutInfo = ({
                 <a href="https://gift-idea.co" target="_blank">
                   gift-idea.co
                 </a>
-                , curating and presenting unique gift ideas.
+                , curating and presenting unique gift ideas, and{' '}
+                <a href="https://aquajoy.club" target="_blank">
+                  aquajoy.club
+                </a>
+                , a resource for aquarium hobbyists.
               </p>
             </motion.div>
 
