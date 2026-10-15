@@ -17,6 +17,16 @@ const PLATFORM_DEPTH = 26;
 // Characters are drawn larger than the tile grid for readability.
 const CHAR_SCALE = 1.5;
 
+// Arena bounds in world pixels (used to fit and clamp the camera).
+const WORLD_LEFT = -ARENA_SIZE * HW - 20;
+const WORLD_RIGHT = ARENA_SIZE * HW + 20;
+const WORLD_TOP = -90;
+const WORLD_BOTTOM = ARENA_SIZE * HH * 2 + PLATFORM_DEPTH + 20;
+
+export const MIN_ZOOM = 1;
+export const MAX_ZOOM = 3;
+const DEFAULT_ZOOM = 1.4;
+
 const iso = (x: number, y: number, z = 0) => ({
   x: (x - y) * HW,
   y: (x + y) * HH - z,
@@ -184,6 +194,7 @@ export interface HudState {
   kills: number;
   wave: number;
   monstersLeft: number;
+  zoom: number;
   damage: number;
   upgrades: UpgradeInfo[];
 }
@@ -271,6 +282,15 @@ export class NinjaGameEngine {
   private cssHeight = 0;
   private resizeObserver: ResizeObserver;
 
+  // Camera: `fitScale` shows the whole arena; `zoom` multiplies it and the
+  // view then follows the ninja.
+  private fitScale = 1;
+  private zoom = DEFAULT_ZOOM;
+  private camX = 0;
+  private camY = (WORLD_TOP + WORLD_BOTTOM) / 2;
+  private pointers = new Map<number, Point>();
+  private pinchDist = 0;
+
   private phase: HudState['phase'] = 'intro';
   private ninja!: Ninja;
   private monsters: Monster[] = [];
@@ -318,8 +338,15 @@ export class NinjaGameEngine {
     this.resizeObserver = new ResizeObserver(() => this.resize());
     this.resizeObserver.observe(canvas);
     this.resize();
+    // Portrait screens show less of the arena, so start closer in.
+    if (this.cssHeight > this.cssWidth) this.zoom = 2.2;
+    this.updateCamera(1);
 
     canvas.addEventListener('pointerdown', this.handlePointer);
+    canvas.addEventListener('pointermove', this.handlePointerMove);
+    canvas.addEventListener('pointerup', this.handlePointerUp);
+    canvas.addEventListener('pointercancel', this.handlePointerUp);
+    canvas.addEventListener('wheel', this.handleWheel, { passive: false });
     canvas.addEventListener('contextmenu', this.preventDefault);
     window.addEventListener('keydown', this.handleKey);
 
@@ -330,8 +357,21 @@ export class NinjaGameEngine {
     cancelAnimationFrame(this.raf);
     this.resizeObserver.disconnect();
     this.canvas.removeEventListener('pointerdown', this.handlePointer);
+    this.canvas.removeEventListener('pointermove', this.handlePointerMove);
+    this.canvas.removeEventListener('pointerup', this.handlePointerUp);
+    this.canvas.removeEventListener('pointercancel', this.handlePointerUp);
+    this.canvas.removeEventListener('wheel', this.handleWheel);
     this.canvas.removeEventListener('contextmenu', this.preventDefault);
     window.removeEventListener('keydown', this.handleKey);
+  }
+
+  setZoom(value: number) {
+    this.zoom = Math.max(MIN_ZOOM, Math.min(MAX_ZOOM, value));
+    this.hudDirty = true;
+  }
+
+  zoomBy(factor: number) {
+    this.setZoom(this.zoom * factor);
   }
 
   start() {
@@ -432,14 +472,32 @@ export class NinjaGameEngine {
     this.canvas.width = Math.round(rect.width * dpr);
     this.canvas.height = Math.round(rect.height * dpr);
 
-    // Arena bounds in world pixels: x ∈ [-512, 512], y ∈ [-90, 512 + platform].
-    const worldW = ARENA_SIZE * HW * 2 + 40;
-    const top = 90;
-    const worldH = ARENA_SIZE * HH * 2 + top + PLATFORM_DEPTH + 20;
-    this.scale = Math.min(rect.width / worldW, rect.height / worldH);
-    this.offsetX = rect.width / 2;
-    this.offsetY = (rect.height - worldH * this.scale) / 2 + top * this.scale;
+    this.fitScale = Math.min(
+      rect.width / (WORLD_RIGHT - WORLD_LEFT),
+      rect.height / (WORLD_BOTTOM - WORLD_TOP),
+    );
     this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    this.updateCamera(1);
+  }
+
+  /** Eases the camera towards the ninja and keeps the arena in view. */
+  private updateCamera(ease: number) {
+    this.scale = this.fitScale * this.zoom;
+    const ninja = iso(this.ninja.x, this.ninja.y, 20);
+    const midX = (WORLD_LEFT + WORLD_RIGHT) / 2;
+    const midY = (WORLD_TOP + WORLD_BOTTOM) / 2;
+    const halfW = this.cssWidth / 2 / this.scale;
+    const halfH = this.cssHeight / 2 / this.scale;
+
+    const clamp = (v: number, min: number, max: number, mid: number) =>
+      min > max ? mid : Math.max(min, Math.min(max, v));
+    const tx = clamp(ninja.x, WORLD_LEFT + halfW, WORLD_RIGHT - halfW, midX);
+    const ty = clamp(ninja.y, WORLD_TOP + halfH, WORLD_BOTTOM - halfH, midY);
+
+    this.camX += (tx - this.camX) * ease;
+    this.camY += (ty - this.camY) * ease;
+    this.offsetX = this.cssWidth / 2 - this.camX * this.scale;
+    this.offsetY = this.cssHeight / 2 - this.camY * this.scale;
   }
 
   private screenToWorld(px: number, py: number): Point {
@@ -461,6 +519,8 @@ export class NinjaGameEngine {
   private preventDefault = (e: Event) => e.preventDefault();
 
   private handleKey = (e: KeyboardEvent) => {
+    if (e.key === '+' || e.key === '=') return this.zoomBy(1.2);
+    if (e.key === '-' || e.key === '_') return this.zoomBy(1 / 1.2);
     const map: Record<string, UpgradeId> = {
       '1': 'blade',
       '2': 'speed',
@@ -470,9 +530,41 @@ export class NinjaGameEngine {
     if (map[e.key]) this.buy(map[e.key]);
   };
 
-  private handlePointer = (e: PointerEvent) => {
-    if (this.phase !== 'playing') return;
+  private handleWheel = (e: WheelEvent) => {
     e.preventDefault();
+    this.zoomBy(Math.exp(-e.deltaY * 0.0015));
+  };
+
+  private pinchDistance() {
+    const [a, b] = Array.from(this.pointers.values());
+    return Math.hypot(a.x - b.x, a.y - b.y);
+  }
+
+  private handlePointerMove = (e: PointerEvent) => {
+    if (!this.pointers.has(e.pointerId)) return;
+    this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (this.pointers.size === 2 && this.pinchDist > 0) {
+      const d = this.pinchDistance();
+      this.zoomBy(d / this.pinchDist);
+      this.pinchDist = d;
+    }
+  };
+
+  private handlePointerUp = (e: PointerEvent) => {
+    this.pointers.delete(e.pointerId);
+    if (this.pointers.size < 2) this.pinchDist = 0;
+  };
+
+  private handlePointer = (e: PointerEvent) => {
+    e.preventDefault();
+    this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (this.pointers.size === 2) {
+      // Second finger: start pinch-zoom instead of acting.
+      this.pinchDist = this.pinchDistance();
+      return;
+    }
+    if (this.pointers.size > 2 || this.phase !== 'playing') return;
+
     const rect = this.canvas.getBoundingClientRect();
     const px = e.clientX - rect.left;
     const py = e.clientY - rect.top;
@@ -732,6 +824,7 @@ export class NinjaGameEngine {
     this.time += dt;
 
     this.update(dt);
+    this.updateCamera(1 - Math.exp(-dt * 6));
     this.render();
 
     if (this.hudDirty) {
@@ -753,6 +846,7 @@ export class NinjaGameEngine {
       kills: this.kills,
       wave: this.wave,
       monstersLeft: this.monsters.length + this.spawnQueue.length,
+      zoom: this.zoom,
       damage: this.damage,
       upgrades: (['blade', 'speed', 'shuriken', 'potion'] as UpgradeId[]).map(
         (id) => this.upgradeInfo(id),
