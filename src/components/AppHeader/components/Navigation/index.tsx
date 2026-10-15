@@ -19,6 +19,10 @@ const navItems: Array<{ label: string; link: string }> = [
     label: 'Contacts',
     link: '/contacts',
   },
+  {
+    label: 'Game',
+    link: '/game',
+  },
 ];
 
 const NavItem = ({
